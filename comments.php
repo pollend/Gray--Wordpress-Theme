@@ -20,7 +20,7 @@
 	</div>
 
 	<ol class="commentlist">
-		<?php wp_list_comments(); ?>
+		<?php wp_list_comments(array('avatar_size' => 70)); ?>
 	</ol>
 
 	<div class="navigation">
@@ -56,15 +56,11 @@
 
 	<form id="commentForm" action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
 
-
-
-		<!--<p>You can use these tags: <code><?php //echo allowed_tags(); ?></code></p>-->
-
 		<div>
 			<textarea name="comment" id="comment" cols="58" rows="10" tabindex="4"></textarea>
 		</div>
 
-		<div id="additonalCommentFields">
+		
 			<div id="additonalCommentFieldsContainer">
 			<?php if ( is_user_logged_in() ) : ?>
 
@@ -88,14 +84,14 @@
 				</div>
 
 			<?php endif; ?>
-
+				<p>You can use these tags: <code><?php //echo allowed_tags(); ?></code></p>
 				<div>
 					<input name="submit" id="commentSubmitButton" type="submit" id="submit" tabindex="5" value="Go" />
 					<?php comment_id_fields(); ?>
 				</div>	
 
-				</div>	
-		</div>
+			</div>	
+	
 
 		<?php do_action('comment_form', $post->ID); ?>
 
