@@ -74,7 +74,7 @@
             )
         );
 
-        $wp_customizer->add_setting( 'gray_cover_background_image' );
+        $wp_customizer->add_setting( 'gray_cover_background_image' ,  array( 'transport' => 'postMessage'));
 
         $wp_customizer->add_control(
         new WP_Customize_Image_Control(
@@ -168,6 +168,7 @@
             var color_one = "<?php echo  get_theme_mod('gray_gradient_one'); ?>";
             var color_two= "<?php echo get_theme_mod('gray_gradient_two'); ?>";
             var background_image= "<?php echo get_theme_mod('gray_pattern_repeat'); ?>" ;
+            var cover_background_image =  "<?php echo get_theme_mod('gray_cover_background_image'); ?>" ;
         </script>
         <?php
     }
