@@ -1,5 +1,7 @@
 <?php get_header(); ?>
-
+<div id="main">
+<div>
+<div id="contentContainer">
 		<?php if (have_posts()) : ?>
 
  			<?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
@@ -27,25 +29,33 @@
 			
 			<?php } ?>
 
-			<?php include (TEMPLATEPATH . '/inc/nav.php' ); ?>
+		
 
 			<?php while (have_posts()) : the_post(); ?>
 			
 				<div <?php post_class() ?>>
 				
-						<h2 id="post-<?php the_ID(); ?>"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
-					
-						<?php include (TEMPLATEPATH . '/inc/meta.php' ); ?>
 
-						<div class="entry">
-							<?php the_content(); ?>
-						</div>
+					<div class="postTitle"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></div>
+
+					<div class="meta">
+
+						<em>Posted on:</em> <span class="postTime"><?php the_time('F jS, Y') ?></span> by <span class="postAuthor"><?php echo get_the_author()?></span>
+					</div>
+
+
+					<div class="entry">
+						<?php the_content(); ?>
+					</div>
+
+					<div class="postmetadata">
+						<?php the_tags('Tags: ', ', ', '<br />'); ?>
+						Entries: <?php the_category(', ') ?> 
+					</div>
 
 				</div>
-
 			<?php endwhile; ?>
 
-			<?php include (TEMPLATEPATH . '/inc/nav.php' ); ?>
 			
 	<?php else : ?>
 
@@ -53,6 +63,13 @@
 
 	<?php endif; ?>
 
-<?php get_sidebar(); ?>
+
+</div>
+
+<div id="sidebarContainer">
+	<?php get_sidebar(); ?>
+</div>
+</div>
+</div>
 
 <?php get_footer(); ?>

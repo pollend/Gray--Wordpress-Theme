@@ -41,64 +41,8 @@
 <?php endif; ?>
 
 <?php if ( comments_open() ) : ?>
-
-<div id="respond">
-
-	<h2><?php comment_form_title( 'Leave a Reply', 'Leave a Reply to %s' ); ?></h2>
-
-	<div class="cancel-comment-reply">
-		<?php cancel_comment_reply_link(); ?>
+	<div id="comment-main-container">
+		<?php comment_form(array('cancel_reply_link' => '<div id="cancel-button"></div>')); ?>
 	</div>
-
-	<?php if ( get_option('comment_registration') && !is_user_logged_in() ) : ?>
-		<p>You must be <a href="<?php echo wp_login_url( get_permalink() ); ?>">logged in</a> to post a comment.</p>
-	<?php else : ?>
-
-	<form id="commentForm" action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
-
-		<div>
-			<textarea name="comment" id="comment" cols="58" rows="10" tabindex="4"></textarea>
-		</div>
-
-		
-			<div id="additonalCommentFieldsContainer">
-			<?php if ( is_user_logged_in() ) : ?>
-
-				<p>Logged in as <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="Log out of this account">Log out &raquo;</a></p>
-
-			<?php else : ?>
-
-				<div class="additonalCommentFieldSpacing">
-					<label for="author"><span class="exageratedCommentFieldPoints">Name</span> <?php if ($req) echo "(required)"; ?></label></br>
-					<input type="text" name="author" id="author" value="<?php echo esc_attr($comment_author); ?>" size="22" tabindex="1" <?php if ($req) echo "aria-required='true'"; ?> />
-				</div>
-
-				<div class="additonalCommentFieldSpacing">
-					<label for="email"><span class="exageratedCommentFieldPoints">Mail</span> (will not be published) <?php if ($req) echo "(required)"; ?></label></br>
-					<input type="text" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" size="22" tabindex="2" <?php if ($req) echo "aria-required='true'"; ?> />
-				</div>
-
-				<div class="additonalCommentFieldSpacing">
-					<label for="url"><span class="exageratedCommentFieldPoints">Website</span></label></br>
-					<input type="text" name="url" id="url" value="<?php echo esc_attr($comment_author_url); ?>" size="22" tabindex="3" />
-				</div>
-
-			<?php endif; ?>
-				<p>You can use these tags: <code><?php //echo allowed_tags(); ?></code></p>
-				<div>
-					<input name="submit" id="commentSubmitButton" type="submit" id="submit" tabindex="5" value="Go" />
-					<?php comment_id_fields(); ?>
-				</div>	
-
-			</div>	
-	
-
-		<?php do_action('comment_form', $post->ID); ?>
-
-	</form>
-
-	<?php endif; // If registration required and not logged in ?>
-	
-</div>
 
 <?php endif; ?>

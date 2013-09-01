@@ -1,8 +1,11 @@
 <?php
 	require "admin/homeOptions.php";
 
+    if ( ! isset( $content_width ) )
+    $content_width = 1000;
+
 	// Add RSS links to <head> section
-	automatic_feed_links();
+	add_theme_support( 'automatic-feed-links' );
 	
 	// Load jQuery
 	if ( !is_admin() ) {

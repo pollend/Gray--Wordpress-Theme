@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<?php ?>
+<?php query_posts( 'posts_per_page=2' ); ?>
 	<?php  get_template_part( 'Presentation', 'index' ); ?>
 
 	<div id="main">
@@ -29,15 +29,20 @@
 
 				</div>
 			<?php endwhile; ?>
+
 		</div>
 
-		<?php include (TEMPLATEPATH . '/inc/nav.php' ); ?>
+		<?php wp_link_pages(); ?>
+
 
 		<?php else : ?>
 
 			<h2>Not Found</h2>
 
 		<?php endif; ?>
+
+
+
 		<div id="sidebarContainer">
 			<?php get_sidebar(); ?>
 		</div>

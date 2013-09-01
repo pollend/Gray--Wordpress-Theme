@@ -21,20 +21,28 @@
 					<div class="postmetadata">
 						<?php the_tags('Tags: ', ', ', '<br />'); ?>
 						Entries: <?php the_category(', ') ?> 
-				
 					</div>
+
+
 
 				</div>
 					
 					<?php comments_template(); ?>
 
 				<?php endwhile; endif; ?>
+
+
+
 			</div>
 			<div id="sidebarContainer">
 				<?php get_sidebar(); ?>
 			</div>
 		</div>
+
+		
 	</div>
+
+
 
 
 <?php get_footer(); ?>

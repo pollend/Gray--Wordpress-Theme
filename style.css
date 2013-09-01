@@ -5,6 +5,7 @@ Description: A simplistic gray and orange theme built for business. fully respon
 Author: Base Plate
 Author URI: http://www.baseplatedesigns.com/
 Version: 1
+Tags: gray, orange, blue, three-columns, two-columns, right-sidebar
 */
 
 
@@ -73,7 +74,9 @@ ul, ol { margin: 0 0 10px 0; }
 	padding-left: 10px;
 	font-size: 20px;
 }
-pre { }
+pre {
+white-space:pre-wrap;
+ }
 code, tt { }
 
 
@@ -114,18 +117,44 @@ color:#939393;
 	color: white;
 }
 
+#submit{
+	padding: 10px;
+	background: #ffb76b; /* Old browsers */
+	background: -moz-linear-gradient(top,  #ffb76b 0%, #ffa73d 50%, #ff7c00 51%, #ff7f04 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffb76b), color-stop(50%,#ffa73d), color-stop(51%,#ff7c00), color-stop(100%,#ff7f04)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #ffb76b 0%,#ffa73d 50%,#ff7c00 51%,#ff7f04 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #ffb76b 0%,#ffa73d 50%,#ff7c00 51%,#ff7f04 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #ffb76b 0%,#ffa73d 50%,#ff7c00 51%,#ff7f04 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #ffb76b 0%,#ffa73d 50%,#ff7c00 51%,#ff7f04 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb76b', endColorstr='#ff7f04',GradientType=0 ); /* IE6-9 */
+	font-weight: bold;
+	font-size: 15px;
+	cursor:pointer;
+	
+}
+
+
+.comment-form p{
+	padding-left: 10px;
+}
+.comment-form .form-submit{
+	padding-left: 0px;
+}
+
 .comment-body{
 	overflow: hidden;
 	position: relative;
-	margin: 0px 0px 30px 4px;
-	padding: 0px 0px 10px 20px;
-
 	border-width: 1px;
-	border-bottom-style: solid;
-	border-left-style: solid;
+	border-top-style: solid;
+	margin: 0px 0px 30px 4px;
+	padding: 20px 0px 10px 20px;
 }
-ol.commentlist { list-style: none; }
-ol.commentlist li { }
+ol.commentlist {
+ list-style: none;
+ padding-top: 5px;
+  }
+ol.commentlist li {
+ }
 ol.commentlist li.alt { }
 ol.commentlist li.bypostauthor { }
 ol.commentlist li.byuser { }
@@ -206,25 +235,73 @@ textarea { }
 
 #respond{
 	padding: 20px;
-	background: #353535;
+	overflow: hidden;
+	margin: 0px 0px 10px 0px;
+	background: rgba(31,31,31,0.09);
+	position: relative;
 }
+
+#commentform p{
+	float: none;
+	font-size: 15px;
+}
+
+#commentform textarea{
+	margin-left: 10px;
+}
+
+.comment-form-comment label{
+	font-size: 20px;
+}
+
+
+#reply-title{
+	font-size: 35px;
+	margin-left: -10px;
+	
+	text-shadow: 2px 2px black;
+}
+#cancel-button{
+position: absolute;
+top: 10px;
+right:10px;
+width: 20px;
+height:20px;
+background: url('images/close.png');
+}
+
+
 
 #additonalCommentFieldsContainer p{
 	width: auto;
 	float: none;
 }
 
-#commentForm{
-	overflow: hidden;
-	padding:20px;
-}
+
 #comment{
-	width: 100%;
+	width: calc(100% - 10px);
 	resize:vertical;
 	background: white;
 	border-width: 0px;
-	box-shadow: 0px 0px 10px black;
+
 }
+
+.comment-form-author label, .comment-form-email label,.comment-form-url label{
+	overflow: hidden;
+	width: 80px;
+	float:  left;
+}
+
+.comment-form-author input, .comment-form-email input,.comment-form-url input{
+border-style: none;
+padding: 3px;
+}
+
+.comment-form-comment textarea{
+margin: 10px;
+}
+
+
 
 #company-logo{
 	color: black;
@@ -513,6 +590,11 @@ textarea { }
 	position: absolute;
 }
 
+.wp-caption
+{
+
+}
+
 /*Footer=--------------------------------------------------------*/
 #footer{
 	border-top-style: solid;
@@ -565,6 +647,91 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	padding: 0px 10px;
 	background:  white;
 }
+
+/* =WordPress Core
+-------------------------------------------------------------- */
+.alignnone {
+    margin: 5px 20px 20px 0;
+}
+
+.aligncenter,
+div.aligncenter {
+    display: block;
+    margin: 5px auto 5px auto;
+}
+
+.alignright {
+    float:right;
+    margin: 5px 0 20px 20px;
+}
+
+.alignleft {
+    float: left;
+    margin: 5px 20px 20px 0;
+}
+
+.aligncenter {
+    display: block;
+    margin: 5px auto 5px auto;
+}
+
+a img.alignright {
+    float: right;
+    margin: 5px 0 20px 20px;
+}
+
+a img.alignnone {
+    margin: 5px 20px 20px 0;
+}
+
+a img.alignleft {
+    float: left;
+    margin: 5px 20px 20px 0;
+}
+
+a img.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.wp-caption {
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    max-width: 96%; /* Image does not overflow the content area */
+    padding: 5px 3px 10px;
+    text-align: center;
+}
+
+.wp-caption.alignnone {
+    margin: 5px 20px 20px 0;
+}
+
+.wp-caption.alignleft {
+    margin: 5px 20px 20px 0;
+}
+
+.wp-caption.alignright {
+    margin: 5px 0 20px 20px;
+}
+
+.wp-caption img {
+    border: 0 none;
+    height: auto;
+    margin: 0;
+    max-width: 98.5%;
+    padding: 0;
+    width: auto;
+}
+
+.wp-caption p.wp-caption-text {
+    font-size: 11px;
+    line-height: 17px;
+    margin: 0;
+    padding: 0 4px 5px;
+}
+
+
 
 @media screen and (min-width:600px) {
 	.menu ul li{

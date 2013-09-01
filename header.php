@@ -66,9 +66,9 @@
 
 		<div id="header">
 			<div id="title">
-				<div id="searchFormContainer"><?php include (TEMPLATEPATH . '/searchform.php'); ?></div>
+				<div id="searchFormContainer"><?php get_search_form(); ?></div>
 				<?php if(get_header_image() == "") : ?>
-					<a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a>
+					<a href="<?php echo home_url(); ?>/"><?php bloginfo('name'); ?></a>
 				<?php else: ?>
 					<img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />
 				<?php endif; ?>
