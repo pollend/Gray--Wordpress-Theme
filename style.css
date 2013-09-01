@@ -1,10 +1,12 @@
 /*   
-Theme Name: Gray
+Theme Name: Gray - Base Plate
 Theme URI: http://baseplatedesigns.com/?page-id=Home&post-id=2
 Description: A simplistic gray and orange theme built for business. fully responsive layout made to look great on any device. 
 Author: Base Plate
 Author URI: http://www.baseplatedesigns.com/
 Version: 1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: gray, orange, blue, three-columns, two-columns, right-sidebar
 */
 
@@ -650,6 +652,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 
 /* =WordPress Core
 -------------------------------------------------------------- */
+
+.sticky{
+
+}
+.gallery-caption{
+
+}
 .alignnone {
     margin: 5px 20px 20px 0;
 }
