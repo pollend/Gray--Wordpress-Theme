@@ -4,20 +4,20 @@ var currentPage = 1;
 
 function SizeElements()
 {
-	var slideWidth = $("#slide").width();
-	$("#slide").height(slideWidth/2);
+	var slideWidth = jQuery("#slide").width();
+	jQuery("#slide").height(slideWidth/2);
 
 }
 
 
 function SetUpSlide()
 {
-	$("#slides li").each(function(element){
+	jQuery("#slides li").each(function(element){
 		slides.push( "#"+this.id);
-		$("#slideSelect").append("<li id=\"slideSelect"+element+"\"></li>");
+		jQuery("#slideSelect").append("<li id=\"slideSelect"+element+"\"></li>");
 		slideSelect.push("#"+"slideSelect"+element);
 
-		$("#slideSelect"+element).on("click",{index : element},function(event){
+		jQuery("#slideSelect"+element).on("click",{index : element},function(event){
 			SwitchToSlide(event.data.index);
 		});
 
@@ -28,7 +28,7 @@ function SetUpSlide()
 function SwitchToSlide(index)
 {
 	var left= true;
-	if(!$(slides[currentPage]).is(':animated'))
+	if(!jQuery(slides[currentPage]).is(':animated'))
 	{
 		if(index != currentPage){
 			var oldPage = currentPage; 
@@ -51,25 +51,25 @@ function SwitchToSlide(index)
 					left = true;
 			}
 
-			$(slideSelect[currentPage]).css({"box-shadow":"0px 0px 0px black", background : "#444444"});
-			$(slideSelect[oldPage]).css({background:"","box-shadow":""});
+			jQuery(slideSelect[currentPage]).css({"box-shadow":"0px 0px 0px black", background : "#444444"});
+			jQuery(slideSelect[oldPage]).css({background:"","box-shadow":""});
 
 			if(left)
 			{
-				$(slides[currentPage]).css({"z-index":3,left:"200%"});
-				$(slides[currentPage]).animate({left : "0%"},500,function()
+				jQuery(slides[currentPage]).css({"z-index":3,left:"200%"});
+				jQuery(slides[currentPage]).animate({left : "0%"},500,function()
 				{
-					$(slides[currentPage]).css({"z-index":2});
-					$(slides[oldPage]).css({"z-index":1});
+					jQuery(slides[currentPage]).css({"z-index":2});
+					jQuery(slides[oldPage]).css({"z-index":1});
 				});
 			}
 			else
 			{
-				$(slides[currentPage]).css({"z-index":3,left:"-100%"});
-				$(slides[currentPage]).animate({left : "0%"},500,function()
+				jQuery(slides[currentPage]).css({"z-index":3,left:"-100%"});
+				jQuery(slides[currentPage]).animate({left : "0%"},500,function()
 				{
-					$(slides[currentPage]).css({"z-index":2});
-					$(slides[oldPage]).css({"z-index":1});
+					jQuery(slides[currentPage]).css({"z-index":2});
+					jQuery(slides[oldPage]).css({"z-index":1});
 				});
 			}
 		}
@@ -78,45 +78,45 @@ function SwitchToSlide(index)
 
 function pageUpdate()
 {
-	$("#page").height("auto");
-	var extraSpace = $(document).height() - $("#page").height();
+	jQuery("#page").height("auto");
+	var extraSpace = jQuery(document).height() - jQuery("#page").height();
 
 	if(extraSpace != 0)
-		$("#page").height($("#page").height() + extraSpace); 
+		jQuery("#page").height(jQuery("#page").height() + extraSpace); 
 }
 
-$(document).ready(function () {
+jQuery(document).ready(function () {
 SizeElements();
 SetUpSlide();
 
-$("#slideLeft").on("click",function(){
+jQuery("#slideLeft").on("click",function(){
 	SwitchToSlide(currentPage-1);
 });
 
-$("#slideRight").on("click",function(){
+jQuery("#slideRight").on("click",function(){
 SwitchToSlide(currentPage+1);
 });
 
 
-$("#comment").on('click', function() {
-	$("#additonalCommentFields").animate({height:$("#additonalCommentFieldsContainer").height()},500);
-	$("html, body").animate({ scrollTop: ($(document).scrollTop() + $("#additonalCommentFieldsContainer").height()) }, "slow");
+jQuery("#comment").on('click', function() {
+	jQuery("#additonalCommentFields").animate({height:jQuery("#additonalCommentFieldsContainer").height()},500);
+	jQuery("html, body").animate({ scrollTop: (jQuery(document).scrollTop() + jQuery("#additonalCommentFieldsContainer").height()) }, "slow");
 });
 
-$(".comment-reply-link").on('click',function(){
-	$("#additonalCommentFields").css({height:$("#additonalCommentFieldsContainer").height()});
+jQuery(".comment-reply-link").on('click',function(){
+	jQuery("#additonalCommentFields").css({height:jQuery("#additonalCommentFieldsContainer").height()});
 });
 
 
 });
 
-$(window).resize(function () {
+jQuery(window).resize(function () {
 SizeElements();
 pageUpdate();
 });
 
 
-$(window).load(function(){
+jQuery(window).load(function(){
 pageUpdate();
 });
 

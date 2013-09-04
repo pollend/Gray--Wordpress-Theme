@@ -8,10 +8,7 @@
 
 					<div class="postTitle"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></div>
 
-					<div class="meta">
-
-						<em>Posted on:</em> <span class="postTime"><?php the_time('F jS, Y') ?></span> by <span class="postAuthor"><?php echo get_the_author()?></span>
-					</div>
+					<div class="meta"></div>
 
 
 					<div class="entry">

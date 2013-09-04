@@ -32,35 +32,13 @@
 	<?php } ?>
 
 	<title>
-		   <?php
-		      if (function_exists('is_tag') && is_tag()) {
-		         single_tag_title("Tag Archive for &quot;"); echo '&quot; - '; }
-		      elseif (is_archive()) {
-		         wp_title(''); echo ' Archive - '; }
-		      elseif (is_search()) {
-		         echo 'Search for &quot;'.wp_specialchars($s).'&quot; - '; }
-		      elseif (!(is_404()) && (is_single()) || (is_page())) {
-		         wp_title(''); echo ' - '; }
-		      elseif (is_404()) {
-		         echo 'Not Found - '; }
-		      if (is_home()) {
-		         bloginfo('name'); echo ' - '; bloginfo('description'); }
-		      else {
-		          bloginfo('name'); }
-		      if ($paged>1) {
-		         echo ' - page '. $paged; }
-		   ?>
+	 <?php wp_title('|',true,'right'); ?>
+	 <?php bloginfo('name'); ?>
 	</title>
 	
-	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" />
-	
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-	<?php // Site Main javascript ?>
-	<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
 
 	<?php wp_head(); ?>
-		<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/main.js" type="text/javascript"></script>
 </head>
 
 <body <?php body_class(); ?>>

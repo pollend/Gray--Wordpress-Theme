@@ -5,12 +5,12 @@ Description: A simplistic gray and orange theme built for business. fully respon
 Author: Base Plate
 Author URI: http://www.baseplatedesigns.com/
 Version: 0.0.2
-License: GNU General Public License v2 or later
+License: GNU General Public License v2 or later0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: gray, orange, blue, three-columns, two-columns, right-sidebar
 */
 
-
+/*BASIC STRUCTURE-------------------------------------------------------------------*/
 * { margin: 0; padding: 0; }
 body {
 
@@ -41,8 +41,11 @@ body {
 
 }
 
-.fullWidth{
+.full-width{
 	width: 100% !important;
+}
+.full-width .postTitle{
+	font-size: 50px;
 }
 
 h1, h2, h3 { font-weight: normal; margin: 0 0 10px 0; }
@@ -85,6 +88,7 @@ code, tt { }
 .postmetadata, .postmetadata a { 
 color:#939393;
 }
+/*SIDEBAR-------------------------------------------------*/
 
 #sidebarContainer { 
 	width: 100%;
@@ -118,7 +122,7 @@ color:#939393;
 
 	color: white;
 }
-
+/*COMMENTS-------------------------------------------------------*/
 #submit{
 	padding: 10px;
 	background: #ffb76b; /* Old browsers */
@@ -303,11 +307,6 @@ padding: 3px;
 margin: 10px;
 }
 
-
-
-#company-logo{
-	color: black;
-}
 #additonalCommentFields{
 	height: 0px;
 }
@@ -339,51 +338,12 @@ margin: 10px;
 }
 
 
-#searchFormContainer{
-	float: none;
-	vertical-align: top;
-	position: relative;
-	width: 100%;
-}
-#searchForm{
-
-	background:#494949;
-	border-style: solid;
-	border-width: 1px;
-	border-color: black;
-	font-size: 0px;
-	height: 26px;
-	padding: 3px;
-	box-shadow: 0px 0px 10px black;
-}
-#searchForm input[type=text]{
-	background: none;
-	border-width: 0px;
-	color: white;
-	font-size: 20px;
-	outline: none;
-	margin-left: 40px;
-	position: absolute;
-	left: 0px;
-	right: 5px;
-	top: 7px;
 
 
-}
-
-#searchForm input[type=submit]{
-	background: url("images/SearchGlass.png");
-	background-size: 27px 27px;
-	height: 27px;
-	width: 27px;
-	left: 5px;
-	position: absolute;
-}
 
 
 #contentContainer{
 	width: 100%;
-	margin-bottom: 30px;
 
 }
 
@@ -399,7 +359,7 @@ margin: 10px;
 	height: auto;
 	margin-top: 20px;
 }
-/*Menu-----------------------------------------------------------------------------------------------------------------------------------*/
+/*HEADER-----------------------------------------------------------------------------------------------------------------------------------*/
 	.menu
 	{
 		background: rgb(43,43,43); /* Old browsers */
@@ -420,6 +380,25 @@ margin: 10px;
 		padding: 20px 0px 50px 0px;
 		overflow: hidden;
 
+	}
+	#blog-container{
+		overflow: hidden;
+	}
+	#pageination-container{
+		background: rgba(0, 0, 0, 0.05);
+		margin: 20px -20px 0px -20px;
+		padding: 0px 20px 0px 20px;
+		font-size: 30px;
+		overflow:  hidden;
+		text-shadow: 2px 2px black;
+	}
+	#pageination-container div{
+		margin: 10px 0px 10px;
+	}
+	#pageination-container a{
+		text-decoration: none;
+		color: white;
+		vertical-align: middle;
 	}
 	.menu ul{
 		margin: 0px;
@@ -444,9 +423,56 @@ margin: 10px;
 	.menu ul li{
 		display: block;
 	}
+
 	#header{
 		padding: 0px 20px;
 	}
+	#company-logo{
+		color: black;
+	}
+
+
+	#searchFormContainer{
+		float: none;
+		vertical-align: top;
+		position: relative;
+		width: 100%;
+	}
+	#searchForm{
+
+		background:#494949;
+		border-style: solid;
+		border-width: 1px;
+		border-color: black;
+		font-size: 0px;
+		height: 26px;
+		padding: 3px;
+		box-shadow: 0px 0px 10px black;
+	}
+	#searchForm input[type=text]{
+		background: none;
+		border-width: 0px;
+		color: white;
+		font-size: 20px;
+		outline: none;
+		margin-left: 40px;
+		position: absolute;
+		left: 0px;
+		right: 5px;
+		top: 7px;
+
+
+	}
+
+	#searchForm input[type=submit]{
+		background: url("images/SearchGlass.png");
+		background-size: 27px 27px;
+		height: 27px;
+		width: 27px;
+		left: 5px;
+		position: absolute;
+	}
+
 /*POST---------------------------------------------------------------*/
 .post{
 	margin: 0px 0px 30px 0px;
@@ -597,7 +623,7 @@ margin: 10px;
 
 }
 
-/*Footer=--------------------------------------------------------*/
+/*FOOTER=--------------------------------------------------------*/
 #footer{
 	border-top-style: solid;
 	border-width: 1px;
@@ -650,8 +676,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	background:  white;
 }
 
-/* =WordPress Core
--------------------------------------------------------------- */
+/* WordPress Core-------------------------------------------------------------- */
 
 .sticky{
 

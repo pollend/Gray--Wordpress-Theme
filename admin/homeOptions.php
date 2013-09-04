@@ -200,7 +200,7 @@
 
 function gray_home_options_page()
 {
-		if (!current_user_can('manage_options'))
+	if (!current_user_can('manage_options'))
     {
       wp_die( __('You do not have sufficient permissions to access this page.') );
     }
@@ -212,7 +212,7 @@ function gray_home_options_page()
 	<div class="wrap">
 	<?php screen_icon(); ?>
 	<h2>Theme Options</h2>
-	     <?php  echo htmlentities(print_r(get_option('gray_home_options'),true)) ?>
+	    
 	<form action="options.php" method="post" >
 		<?php settings_fields('gray_home_options'); ?>
 

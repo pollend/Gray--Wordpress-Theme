@@ -29,7 +29,6 @@ define('WP_USE_THEMES', true);
 			<?php endwhile; ?>
 		</div>
 
-		<?php include (TEMPLATEPATH . '/inc/nav.php' ); ?>
 
 		<?php else : ?>
 
