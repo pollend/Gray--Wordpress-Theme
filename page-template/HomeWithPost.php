@@ -13,9 +13,9 @@ define('WP_USE_THEMES', true);
 	<?php  get_template_part( 'Presentation', 'index' ); ?>
 
 	<div id="main">
+		<div>
+			<div id="contentContainer" >
 
-
-		<div id="contentContainer">
 			<?php
 				$temp = $wp_query;
 				$wp_query= null;
