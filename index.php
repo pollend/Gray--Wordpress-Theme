@@ -24,14 +24,12 @@
 						<div class="postmetadata">
 							<?php the_tags('Tags: ', ', ', '<br />'); ?>
 							Entries: <?php the_category(', ') ?> 
-					
 						</div>
-
+						<?php link_pages('<p><strong>Pages:</strong> ', '</p>', 'number'); ?>
 					</div>
 				<?php endwhile; ?>
 			</div>
 
-			<?php wp_link_pages(); ?>
 
 
 			<?php else : ?>
@@ -45,6 +43,7 @@
 			</div>
 		</div>
 		<div id="pageination-container">
+
 			<div class="nav-previous alignleft"><?php next_posts_link( 'Older posts' ); ?></div>
 			<div class="nav-next alignright"><?php previous_posts_link( 'Newer posts' ); ?></div>
 		</div>

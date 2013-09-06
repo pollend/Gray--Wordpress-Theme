@@ -22,8 +22,7 @@
 						<?php the_tags('Tags: ', ', ', '<br />'); ?>
 						Entries: <?php the_category(', ') ?> 
 					</div>
-
-
+					<?php link_pages('<p><strong>Pages:</strong> ', '</p>', 'number'); ?>
 
 				</div>
 					

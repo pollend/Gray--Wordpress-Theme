@@ -13,14 +13,9 @@
 
 					<div class="entry">
 						<?php the_content(); ?>
+						
 					</div>
 
-					<div class="postmetadata">
-						<?php the_tags('Tags: ', ', ', '<br />'); ?>
-						Entries: <?php the_category(', ') ?> 
-					</div>
-
-				
 				</div>
 					<?php comments_template(); ?>
 

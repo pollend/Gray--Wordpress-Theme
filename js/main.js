@@ -1,6 +1,7 @@
 var slides = new Array();
 var slideSelect = new Array();
 var currentPage = 1;
+var menuChain = new Array();
 
 function SizeElements()
 {
@@ -86,6 +87,22 @@ function pageUpdate()
 }
 
 jQuery(document).ready(function () {
+
+jQuery(".menu li").each(function(element){
+	if(jQuery(this).find(".sub-menu").length > 0)
+	{
+		jQuery("#"+this.id + ", #" + this.id + ">.sub-menu").on("mouseenter",{submenu:jQuery("#"+this.id + ">.sub-menu")},function(event){
+			event.data.submenu.css("display","block");
+
+		});
+
+		jQuery("#"+this.id + " , #" + this.id + ">.sub-menu").on("mouseleave",{submenu:jQuery("#"+this.id + ">.sub-menu")},function(event){
+			event.data.submenu.css("display","none");
+		});
+	}
+
+});
+
 SizeElements();
 SetUpSlide();
 
@@ -106,6 +123,7 @@ jQuery("#comment").on('click', function() {
 jQuery(".comment-reply-link").on('click',function(){
 	jQuery("#additonalCommentFields").css({height:jQuery("#additonalCommentFieldsContainer").height()});
 });
+
 
 
 });
