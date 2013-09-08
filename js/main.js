@@ -9,15 +9,7 @@ var smallWindowMenu = false;
 
 function resizeMainArea(){
 
-	jQuery("#page").height("auto");
-	var extraSpace = jQuery(document).height() - jQuery("#page").height();
-
-
-	if(extraSpace != 0)
-		jQuery("#page").height(jQuery("#page").height() + extraSpace);
-
-
-	if(jQuery(screen).width() <= 600)
+	if(jQuery("#menu-drop-down").is(":visible") )
 	{
 		jQuery(".sub-menu").css("display","block");
 		smallWindowMenu = true;
@@ -27,6 +19,14 @@ function resizeMainArea(){
 		jQuery(".sub-menu").css("display","none");
 		smallWindowMenu = false;
 	}
+
+	jQuery("#page").height("auto");
+	var extraSpace = jQuery(document).height() - jQuery("#page").height();
+
+
+	if(extraSpace != 0)
+		jQuery("#page").height(jQuery("#page").height() + extraSpace);
+
 
 }
 
