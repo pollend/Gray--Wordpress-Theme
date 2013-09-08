@@ -4,31 +4,35 @@
 	<div>
 		<div id="contentContainer">
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-					
-				<div <?php post_class() ?> id="post-<?php the_ID(); ?>">
 
-					<div class="postTitle"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></div>
+					<div <?php post_class() ?> id="post-<?php the_ID(); ?>">
 
-					<div class="meta">
-						<em>Posted on:</em> <span class="postTime"><?php the_time('F jS, Y') ?></span> by <span class="postAuthor"><?php echo get_the_author()?></span>
-					</div>
+						<div class="postTitle"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></div>
+
+						<div class="meta">
+							<em>Posted on:</em> <span class="postTime"><?php the_time('F jS, Y') ?></span> by <span class="postAuthor"><?php echo get_the_author()?></span>
+						</div>
 
 
-					<div class="entry">
-						<?php the_content(); ?>
-					</div>
+						<div class="entry">
+							<?php the_content(); ?>
+						</div>
 
-					<div class="postmetadata">
-						<?php the_tags('Tags: ', ', ', '<br />'); ?>
-						Entries: <?php the_category(', ') ?> 
-					</div>
-					<?php link_pages('<p><strong>Pages:</strong> ', '</p>', 'number'); ?>
+						<div class="postmetadata">
+							<?php the_tags('Tags: ', ', ', '<br />'); ?>
+							Entries: <?php the_category(', ') ?> 
+						</div>
 
-				</div>
-					
-					<?php comments_template(); ?>
+						<div id="page-numbering">
+						<?php wp_link_pages("Page before=<p>&after=</p>&next_or_number=number&pagelink= %"); ?>
+						</div>
+					</div>				
 
-				<?php endwhile; endif; ?>
+				<?php endwhile; 
+
+				 comments_template();
+
+				endif; ?>
 
 
 

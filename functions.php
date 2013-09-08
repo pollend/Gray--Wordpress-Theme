@@ -2,7 +2,7 @@
 	require "admin/homeOptions.php";
 
     if ( ! isset( $content_width ) )
-    $content_width = 1000;
+    $content_width = 500;
 
 
 	// Clean up the <head>
@@ -161,14 +161,26 @@
         if ( is_singular() ) 
             wp_enqueue_script( 'comment-reply' );
 
+        //get debounce script to prevent user event spam
+        wp_enqueue_script( "debounce", get_template_directory_uri()."/js/debounce.js",array("jquery"),'1.1');
+
         //enqueue jquery and main javascript
         wp_enqueue_script('jquery');   
 
         //get main script
-        wp_enqueue_script( "gray_main", get_template_directory_uri()."/js/main.js",array("jquery"),'1.0.0');
+        wp_enqueue_script( "gray_main", get_template_directory_uri()."/js/main.js",array("jquery","debounce","transit"),'1.0.0');
     
+        //lightbox script
+        wp_enqueue_script("lightbox",get_template_directory_uri()."/js/lightbox-2.6.min.js",array("gray_main"),'2.6');
+
         //register style sheet
         wp_enqueue_style( 'gray_style', get_stylesheet_uri(), array(), '1.0.0' );
+
+        //lightbox style sheet
+        wp_enqueue_style( 'lightbox', get_template_directory_uri() . "/css/lightbox.css", array(), '2.6' );
+
+        //transit
+         wp_enqueue_script( 'transit', get_template_directory_uri() . "/js/transit.js", array(), '1' );
     }
     add_action( 'wp_enqueue_scripts', 'gray_script_style' );
 
@@ -194,6 +206,7 @@
             'admin-head-callback'    => '',
             'admin-preview-callback' => '',
         ));
+
     }
     add_action( 'after_setup_theme', 'gray_setup' );
 

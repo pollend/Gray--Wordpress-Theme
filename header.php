@@ -55,7 +55,12 @@
 				<?php endif; ?>
 
 			</div>
+
 			<div class="description"><?php bloginfo('description'); ?></div>
 		</div>
-					<?php wp_nav_menu(); ?>
-
+		<div id="menu-container" class="up">
+			<div id="menu-drop-down"><a href="#" id="drop-down-button"><div id="drop-down-icon"></div>Menu</a></div>
+		
+				<?php wp_nav_menu(); ?>
+			
+		</div>
