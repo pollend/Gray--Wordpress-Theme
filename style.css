@@ -883,7 +883,7 @@ a img.aligncenter {
 	}
 
 	#menu-drop-down{
-	display: none;	
+		display: none;	
 	}
 	.menu{
 		height: auto !important;

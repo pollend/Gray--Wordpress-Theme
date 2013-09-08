@@ -17,7 +17,7 @@ function resizeMainArea(){
 		jQuery("#page").height(jQuery("#page").height() + extraSpace);
 
 
-	if(jQuery(window).width() < 600)
+	if(jQuery(screen).width() <= 600)
 	{
 		jQuery(".sub-menu").css("display","block");
 		smallWindowMenu = true;
