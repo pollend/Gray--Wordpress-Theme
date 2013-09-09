@@ -89,6 +89,7 @@ function ImageOverlay( gallerID,  itemID){
 		jQuery("#overlay-enlarged-image-container").css({"display":"block","opacity":0});
 		jQuery("#overlay-backdrop").transition({opacity:1},500);
 		jQuery("#overlay-enlarged-image-container").transition({opacity:1,top: (jQuery(document).scrollTop()+95)},500);
+		jQuery("#image-overlay-caption").css("display","block");
 	}
 	
 
@@ -101,13 +102,19 @@ function ImageOverlay( gallerID,  itemID){
 		var lItem = gallerygroup[gallerID][itemID];
 		if(jQuery("#overlay-image img").attr("src") !== lItem[0])
 		{
-			//set caption
+			//set undefined to ""
+			if(typeof lItem[1] === 'undefined')
+			{
+				lItem[1] ="";
+			}
+			//set caption and number of images
 			jQuery("#image-overlay-caption .image-caption").html(lItem[1]);
 			jQuery("#image-overlay-caption .num-images").html("image "+ (selectedImage +1)+" of " + gallerygroup[selectedGallery].length );
+			jQuery("#image-overlay-caption .image-caption").attr("style","")
+			jQuery("#image-overlay-caption .image-caption").css({opacity:"0"});
 
 			jQuery("#image-over-loading").css({display:"block"});
-
-			jQuery("#overlay-image img").transition({"opacity":0},300,function(){
+			jQuery("#overlay-image img").transition({"opacity":0},300).promise().done(function(){
 				jQuery("#overlay-image img").on("load",function(){
 					jQuery("#overlay-image img").css({width:"auto",height:"auto"});
 
@@ -131,13 +138,16 @@ function ImageOverlay( gallerID,  itemID){
 						jQuery("#overlay-image img").width(lImageWidth);
 						jQuery("#overlay-image img").height(lImageHeight);
 
-						jQuery("#overlay-image").transition({height:(lImageHeight + jQuery("#image-overlay-caption").height()),width:lImageWidth},300);
-						jQuery("#overlay-image img").transition({"opacity":1},400,function(){
-							lockImageProgression = false;
-							jQuery("#image-overlay-caption").css("display","block");
-							jQuery("#overlay-image").transition({height:(lImageHeight + jQuery("#image-overlay-caption").height())},10);
-						});	
-						jQuery("#image-over-loading").css({display:"none"});
+
+						jQuery("#overlay-image").transition({width:lImageWidth},100).promise().done(function(){
+							jQuery("#overlay-image").transition({height:(lImageHeight + jQuery("#image-overlay-caption").height())},100).promise().done(function(){
+								
+								jQuery("#image-overlay-caption .image-caption").transition({"opacity":1},100);
+								jQuery("#overlay-image img").transition({"opacity":1},400);	
+								jQuery("#image-over-loading").css({display:"none"});
+								lockImageProgression = false;
+							});
+						});
 							
 
 				}); 

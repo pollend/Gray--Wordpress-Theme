@@ -1,1 +1,0 @@
-Bundled images are licensed under the GPL. Copyright 2013

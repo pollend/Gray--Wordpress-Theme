@@ -148,8 +148,6 @@
     function gray_slide_field() {
     	$options = get_option("gray_home_options");
         ?> 
-
-
 	        <input type="hidden" name="gray_home_options[numslides]" id="gray_options_number_slides" value="<?php echo $options["numslides"] ?>" />
 	        <div id="slide_options">
 		        <?php 
@@ -167,10 +165,6 @@
 		        ?>
 	        </div>
 	         <div><a id="addSlide" href="#">add Slide</a></div>
-
-
-
-
         <?php
 
     }
@@ -202,7 +196,7 @@ function gray_home_options_page()
 {
 	if (!current_user_can('manage_options'))
     {
-      wp_die( __('You do not have sufficient permissions to access this page.') );
+      wp_die( 'You do not have sufficient permissions to access this page.');
     }
 
 	?>

@@ -1,5 +1,5 @@
 <?php
-	require "admin/homeOptions.php";
+
 
     if ( ! isset( $content_width ) )
     $content_width = 500;
@@ -83,19 +83,17 @@
         );
 
         $control = $wp_customizer->get_control( 'gray_pattern_repeat' );
+        $control->add_tab( 'builtins', 'Built-ins', function() {
+            /* Supply a list of built-in background that come with your theme */
+            $backgrounds = array(
+                'images/strip.png'
+            );
 
-        $control->add_tab( 'builtins', __('Built-ins'), function() {
-        /* Supply a list of built-in background that come with your theme */
-        $backgrounds = array(
-            'images/strip.png'
-        );
+            global  $wp_customize;
+            $control =  $wp_customize->get_control( 'gray_pattern_repeat' );
 
-        global  $wp_customize;
-        $control =  $wp_customize->get_control( 'gray_pattern_repeat' );
-
-        foreach ( (array) $backgrounds as $background )
-            $control->print_tab_image( esc_url_raw( get_stylesheet_directory_uri() . '/' . $background ) );
-
+            foreach ( (array) $backgrounds as $background )
+                $control->print_tab_image( esc_url_raw( get_stylesheet_directory_uri() . '/' . $background ) );
          } );
 
 
@@ -128,6 +126,11 @@
          if ( $wp_customizer->is_preview() && ! is_admin() ) {
             add_action( 'wp_footer', 'gray_customizer_preview', 21);
         }
+
+        //send messages to post
+        $wp_customizer->get_setting( 'blogname' )->transport         = 'postMessage';
+        $wp_customizer->get_setting( 'blogdescription' )->transport  = 'postMessage';
+        $wp_customizer->get_setting( 'header_textcolor' )->transport = 'postMessage';
     }
     add_action( 'customize_register', 'gray_customizer' );
 
@@ -192,19 +195,15 @@
 
 
         add_theme_support( 'custom-header', array(
-            'default-image'          => '',
             'random-default'         => false,
             'flex-height'            => true,
             'flex-width'             => true,
             'height'                 => 250,
             'width'                  => 960,
             'max-width'              => 2000,
-            'default-text-color'     => '',
             'header-text'            => true,
             'uploads'                => true,
-            'wp-head-callback'       => '',
-            'admin-head-callback'    => '',
-            'admin-preview-callback' => '',
+
         ));
 
     }

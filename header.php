@@ -22,6 +22,11 @@
 			<?php endif; ?>
 		}
 
+		#title a{
+			color : #<?php echo get_theme_mod("header_textcolor") ; ?>;
+			text-decoration: none;
+
+		}
 	</style>
 
 	<meta name="viewport" content="width=device-width">
@@ -42,8 +47,6 @@
 </head>
 
 <body <?php body_class(); ?>>
-
-	
 	<div id="overlay-backdrop"></div>
 	<div id="overlay-enlarged-image-container">
 		<div id="overlay-image">
@@ -61,10 +64,7 @@
 
 		</div>
 	</div>
-
-
-
-
+	
 	<div id="page">
 		<div id="header">
 			<div id="title">
