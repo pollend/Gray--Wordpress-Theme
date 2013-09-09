@@ -131,12 +131,11 @@ function ImageOverlay( gallerID,  itemID){
 						jQuery("#overlay-image img").width(lImageWidth);
 						jQuery("#overlay-image img").height(lImageHeight);
 
-						jQuery("#overlay-image").transition({height:(lImageHeight + jQuery("#image-overlay-caption").height()),width:lImageWidth},300,function(){
-							jQuery("#overlay-image").transition({height:(lImageHeight + jQuery("#image-overlay-caption").height())},50);
-						});
+						jQuery("#overlay-image").transition({height:(lImageHeight + jQuery("#image-overlay-caption").height()),width:lImageWidth},300);
 						jQuery("#overlay-image img").transition({"opacity":1},400,function(){
 							lockImageProgression = false;
 							jQuery("#image-overlay-caption").css("display","block");
+							jQuery("#overlay-image").transition({height:(lImageHeight + jQuery("#image-overlay-caption").height())},10);
 						});	
 						jQuery("#image-over-loading").css({display:"none"});
 							
