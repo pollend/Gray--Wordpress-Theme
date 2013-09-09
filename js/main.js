@@ -86,23 +86,7 @@ jQuery(document).ready(function () {
 		resizeMainArea();
 	}));
 
-	//looks for each gallery grouping
-	jQuery(".gallery").each(function(galleryID){
-		jQuery("#"+ this.id + " .gallery-item").data("gallerID",galleryID);
 
-		jQuery("#"+ this.id + " .gallery-item").each(function(associatedImgID)
-		{
-			if(jQuery(this).find("a[href$='.jpg'],a[href$='.png']").length === 0)
-			{
-				jQuery(this).find(".wp-caption-text").css("display","block");
-			}
-			else
-			{
-				jQuery(this).find("a[href$='.jpg'],a[href$='.png']").attr("data-lightbox", "gallery" +jQuery(this).data("gallerID") );
-				jQuery(this).find("a[href$='.jpg'],a[href$='.png']").attr("data-caption", jQuery(this).find(".wp-caption-text").html() );
-			}
-		});
-	});
 
 	jQuery("#drop-down-button").on("click",function(){
 		if(jQuery("#menu-container").hasClass('up'))

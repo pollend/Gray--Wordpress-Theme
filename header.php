@@ -42,9 +42,30 @@
 </head>
 
 <body <?php body_class(); ?>>
-	
-	<div id="page">
 
+	
+	<div id="overlay-backdrop"></div>
+	<div id="overlay-enlarged-image-container">
+		<div id="overlay-image">
+			<img>
+			<div id="image-over-loading"></div>
+			<a id="image-overlay-close" href="#"><div class="overlay-controls"></div></a>
+			<div id="image-overlay-caption" class="overlay-controls">
+				<div class="num-images"></div>
+
+				<div class="image-caption"></div>
+
+			</div>
+			<a href="#" id="image-overlay-left"><div class="click-area"></div><div class="button" class="overlay-controls"></div></a>
+			<a href="#" id="image-overlay-right"><div class="click-area"></div><div class="button" class="overlay-controls"></div></a>
+
+		</div>
+	</div>
+
+
+
+
+	<div id="page">
 		<div id="header">
 			<div id="title">
 				<div id="searchFormContainer"><?php get_search_form(); ?></div>
@@ -60,7 +81,5 @@
 		</div>
 		<div id="menu-container" class="up">
 			<div id="menu-drop-down"><a href="#" id="drop-down-button"><div id="drop-down-icon"></div>Menu</a></div>
-		
 				<?php wp_nav_menu(); ?>
-			
 		</div>

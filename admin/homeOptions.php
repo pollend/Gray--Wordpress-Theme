@@ -159,7 +159,7 @@
 		        	<div id="slides_option_container<?php echo $x ?>">
 						<input id="upload_image<?php echo $x ?>" type="text" size="36" name='gray_home_options[Slide<?php echo $x; ?>]' value="<?php echo  htmlentities($options["Slide".$x]) ?>" />
 						<input id="upload_image_button<?php echo $x ?>" type="button" value="Upload Image" />
-						<input id="remove_slide<?php echo $x ?>" type="button" value="remove" /></br>Enable HTML input: 
+						<input id="remove_slide<?php echo $x ?>" type="button" value="remove" /></br>Input raw HTML into slide: 
 						<input name='gray_home_options[isHTML<?php echo $x; ?>]' <?php echo empty($options["isHTML" . $x]) ? "" : "checked"; ?> value="1" type="checkbox"/>
 					</div>
 		        	<?php

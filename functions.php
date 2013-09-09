@@ -170,14 +170,14 @@
         //get main script
         wp_enqueue_script( "gray_main", get_template_directory_uri()."/js/main.js",array("jquery","debounce","transit"),'1.0.0');
     
-        //lightbox script
-        wp_enqueue_script("lightbox",get_template_directory_uri()."/js/lightbox-2.6.min.js",array("gray_main"),'2.6');
+        //image overlay script
+        wp_enqueue_script("gray_imageOverlay",get_template_directory_uri()."/js/imageOverlay.js",array("gray_main"),'1.0.0');
 
         //register style sheet
         wp_enqueue_style( 'gray_style', get_stylesheet_uri(), array(), '1.0.0' );
 
-        //lightbox style sheet
-        wp_enqueue_style( 'lightbox', get_template_directory_uri() . "/css/lightbox.css", array(), '2.6' );
+        //image overly style sheet
+        wp_enqueue_style( 'gray_imageOverlay', get_template_directory_uri() . "/imageOverlay.css", array(), '1.0.0' );
 
         //transit
          wp_enqueue_script( 'transit', get_template_directory_uri() . "/js/transit.js", array(), '1' );
