@@ -56,22 +56,24 @@ jQuery(document).ready(function () {
 	});
 
 	jQuery("#image-overlay-left").on("click",function(event){
-		selectedImage--;
-		if(selectedImage < 0)
+		var imageID = selectedImage;
+		imageID--;
+		if(imageID < 0)
 		{
-			selectedImage = gallerygroup[selectedGallery].length -1;
+			imageID = gallerygroup[selectedGallery].length -1;
 		}
-		ImageOverlay(selectedGallery,selectedImage);
+		ImageOverlay(selectedGallery,imageID);
 		event.stopImmediatePropagation();
 		return false;
 	});
 	jQuery("#image-overlay-right").on("click",function(event){
-		selectedImage++;
-		if(selectedImage >= gallerygroup[selectedGallery].length)
+		var imageID = selectedImage;
+		imageID++;
+		if(imageID >= gallerygroup[selectedGallery].length)
 		{
-			selectedImage = 0;
+			imageID = 0;
 		}
-		ImageOverlay(selectedGallery,selectedImage);
+		ImageOverlay(selectedGallery,imageID);
 		event.stopImmediatePropagation();
 		return false;
 	});
@@ -110,12 +112,13 @@ function ImageOverlay( gallerID,  itemID){
 			//set caption and number of images
 			jQuery("#image-overlay-caption .image-caption").html(lItem[1]);
 			jQuery("#image-overlay-caption .num-images").html("image "+ (selectedImage +1)+" of " + gallerygroup[selectedGallery].length );
-			jQuery("#image-overlay-caption .image-caption").attr("style","")
+			jQuery("#image-overlay-caption .image-caption").attr("style","");
 			jQuery("#image-overlay-caption .image-caption").css({opacity:"0"});
 
 			jQuery("#image-over-loading").css({display:"block"});
-			jQuery("#overlay-image img").transition({"opacity":0},300).promise().done(function(){
-				jQuery("#overlay-image img").on("load",function(){
+
+			jQuery("#overlay-image img").transition({"opacity":0},300,function(){
+				jQuery("#overlay-image img").attr("src",lItem[0]).load(function(){
 					jQuery("#overlay-image img").css({width:"auto",height:"auto"});
 
 						var lImageWidth = jQuery("#overlay-image img").width();
@@ -139,11 +142,11 @@ function ImageOverlay( gallerID,  itemID){
 						jQuery("#overlay-image img").height(lImageHeight);
 
 
-						jQuery("#overlay-image").transition({width:lImageWidth},100).promise().done(function(){
-							jQuery("#overlay-image").transition({height:(lImageHeight + jQuery("#image-overlay-caption").height())},100).promise().done(function(){
+						jQuery("#overlay-image").transition({width:lImageWidth},100,function(){
+							jQuery("#overlay-image").transition({height:(lImageHeight + jQuery("#image-overlay-caption").height())},100,function(){
 								
-								jQuery("#image-overlay-caption .image-caption").transition({"opacity":1},100);
-								jQuery("#overlay-image img").transition({"opacity":1},400);	
+								jQuery("#image-overlay-caption .image-caption").transition({"opacity":1},300);
+								jQuery("#overlay-image img").transition({"opacity":1},300);	
 								jQuery("#image-over-loading").css({display:"none"});
 								lockImageProgression = false;
 							});
@@ -151,7 +154,7 @@ function ImageOverlay( gallerID,  itemID){
 							
 
 				}); 
-				jQuery("#overlay-image img").attr("src",lItem[0]); 
+				 
 			});	
 		}
 	}
