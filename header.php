@@ -50,7 +50,7 @@
 	<div id="overlay-backdrop"></div>
 	<div id="overlay-enlarged-image-container">
 		<div id="overlay-image">
-			<img>
+			<img id="image-overlay-image"></img>
 			<div id="image-over-loading"></div>
 			<a id="image-overlay-close" href="#"><div class="overlay-controls"></div></a>
 			<div id="image-overlay-caption" class="overlay-controls">

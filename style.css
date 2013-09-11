@@ -4,7 +4,7 @@ Theme URI: http://baseplatedesigns.com/?page-id=Home&post-id=2
 Description: A simplistic gray and orange theme built for business. fully responsive layout made to look great on any device. 
 Author: Base Plate
 Author URI: http://www.baseplatedesigns.com/
-Version: 1.7.1
+Version: 2.0.1
 License: GNU General Public License v2 or later0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: gray, orange, blue, three-columns, two-columns, right-sidebar
@@ -555,7 +555,12 @@ margin: 10px;
 	}
 
 /*POST---------------------------------------------------------------*/
-
+.sticky{
+	border-style: solid;
+	border-width: 2px;
+	border-color: rgb(121,118,118);
+	background:rgba(80, 66, 25, 0.06);
+}
 
 
 .post{
@@ -769,9 +774,7 @@ img.alignnone{
 	height: auto;
 }
 
-.sticky{
 
-}
 .gallery{
 	padding: 10px 0px;
 }

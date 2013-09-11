@@ -7,8 +7,8 @@
 		<div id="search-result">Search Results: <?php the_search_query(); ?></div>
 
 		<?php while (have_posts()) : the_post(); ?>
-
-			<div <?php post_class() ?> id="post-<?php the_ID(); ?>">
+			
+			<div <?php post_class() ?> style="padding:20px;" id="post-<?php the_ID(); ?>">
 
 					<div class="postTitle"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></div>
 

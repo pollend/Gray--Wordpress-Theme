@@ -102,7 +102,7 @@ function ImageOverlay( gallerID,  itemID){
 		selectedImage = itemID;
 
 		var lItem = gallerygroup[gallerID][itemID];
-		if(jQuery("#overlay-image img").attr("src") !== lItem[0])
+		if(jQuery("#image-overlay-image").attr("src") !== lItem[0])
 		{
 			//set undefined to ""
 			if(typeof lItem[1] === 'undefined')
@@ -112,17 +112,17 @@ function ImageOverlay( gallerID,  itemID){
 			//set caption and number of images
 			jQuery("#image-overlay-caption .image-caption").html(lItem[1]);
 			jQuery("#image-overlay-caption .num-images").html("image "+ (selectedImage +1)+" of " + gallerygroup[selectedGallery].length );
-			jQuery("#image-overlay-caption .image-caption").attr("style","");
+			jQuery("#image-overlay-caption .image-caption").attr("style","")
 			jQuery("#image-overlay-caption .image-caption").css({opacity:"0"});
 
 			jQuery("#image-over-loading").css({display:"block"});
 
-			jQuery("#overlay-image img").transition({"opacity":0},300,function(){
-				jQuery("#overlay-image img").attr("src",lItem[0]).load(function(){
-					jQuery("#overlay-image img").css({width:"auto",height:"auto"});
+			jQuery("#image-overlay-image").transition({"opacity":0},300,function(){
+				jQuery("#image-overlay-image").one("load",function(){
+					jQuery("#image-overlay-image").css({width:"auto",height:"auto"});
 
-						var lImageWidth = jQuery("#overlay-image img").width();
-						var lImageHeight = jQuery("#overlay-image img").height();
+						var lImageWidth = jQuery("#image-overlay-image").width();
+						var lImageHeight = jQuery("#image-overlay-image").height();
 						var laspectRatio =lImageWidth/lImageHeight;
 						var lScreenWidth = jQuery(window).width();
 						var lScreenHeight = jQuery(window).height();
@@ -130,23 +130,23 @@ function ImageOverlay( gallerID,  itemID){
 						//make sure image dosent leave screen
 						if((lImageHeight+95) > lScreenHeight )
 						{
-							lImageWidth = laspectRatio*(lScreenHeight-150);
-							lImageHeight = (lScreenHeight-150);
+							lImageWidth = Math.round(laspectRatio*(lScreenHeight-150));
+							lImageHeight = Math.round(lScreenHeight-150);
 						}
 						if(lImageWidth > lScreenWidth)
 						{
-							lImageWidth = (lScreenWidth-25);
-							lImageHeight =(lScreenWidth-25)/(laspectRatio);
+							lImageWidth = Math.round(lScreenWidth-25);
+							lImageHeight =Math.round((lScreenWidth-25)/laspectRatio);
 						}
-						jQuery("#overlay-image img").width(lImageWidth);
-						jQuery("#overlay-image img").height(lImageHeight);
+						jQuery("#image-overlay-image").width(lImageWidth);
+						jQuery("#image-overlay-image").height(lImageHeight);
 
 
 						jQuery("#overlay-image").transition({width:lImageWidth},100,function(){
 							jQuery("#overlay-image").transition({height:(lImageHeight + jQuery("#image-overlay-caption").height())},100,function(){
 								
-								jQuery("#image-overlay-caption .image-caption").transition({"opacity":1},300);
-								jQuery("#overlay-image img").transition({"opacity":1},300);	
+								jQuery("#image-overlay-caption .image-caption").transition({"opacity":1},100);
+								jQuery("#image-overlay-image").transition({"opacity":1},300);	
 								jQuery("#image-over-loading").css({display:"none"});
 								lockImageProgression = false;
 							});
@@ -154,7 +154,7 @@ function ImageOverlay( gallerID,  itemID){
 							
 
 				}); 
-				 
+				jQuery("#image-overlay-image").attr("src",lItem[0]); 
 			});	
 		}
 	}
