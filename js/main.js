@@ -11,12 +11,12 @@ function resizeMainArea(){
 
 	if(jQuery("#menu-drop-down").is(":visible") )
 	{
-		jQuery(".sub-menu").css("display","block");
+		jQuery(".children").css("display","block");
 		smallWindowMenu = true;
 	}
 	else
 	{
-		jQuery(".sub-menu").css("display","none");
+		jQuery(".children").css("display","none");
 		smallWindowMenu = false;
 	}
 
@@ -50,15 +50,17 @@ jQuery(document).ready(function () {
   		jQuery.fn.transition = jQuery.fn.animate;
 
 	jQuery(".menu li").each(function(element){
-		if(jQuery(this).find(".sub-menu").length > 0)
+		if(jQuery(this).find(".children").length > 0)
 		{
-			jQuery("#"+this.id + ", #" + this.id + ">.sub-menu").on("mouseenter",{submenu:jQuery("#"+this.id + ">.sub-menu")},function(event){
+			jQuery(this).attr("id","item-" + element);
+
+			jQuery("#"+this.id + ", #" + this.id + ">.children").on("mouseenter",{submenu:jQuery("#"+this.id + ">.children")},function(event){
 				if(smallWindowMenu === false)
 				event.data.submenu.css("display","block");
 
 			});
 
-			jQuery("#"+this.id + " , #" + this.id + ">.sub-menu").on("mouseleave",{submenu:jQuery("#"+this.id + ">.sub-menu")},function(event){
+			jQuery("#"+this.id + " , #" + this.id + ">.children").on("mouseleave",{submenu:jQuery("#"+this.id + ">.children")},function(event){
 				if(smallWindowMenu === false)
 				event.data.submenu.css("display","none");
 			});

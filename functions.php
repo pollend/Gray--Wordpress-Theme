@@ -1,36 +1,76 @@
 <?php
 
+	function gray_init() {
 
-    if ( ! isset( $content_width ) )
-    $content_width = 500;
+        register_sidebar(array(
+            'name' => 'Sidebar Widgets',
+            'id'   => 'sidebar-widgets',
+            'description'   => 'These are widgets for the sidebar.',
+            'before_widget' => '<div id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h2>',
+            'after_title'   => '</h2>'
+        ));
 
-
-	// Clean up the <head>
-	function removeHeadLinks() {
-    	remove_action('wp_head', 'rsd_link');
-    	remove_action('wp_head', 'wlwmanifest_link');
-        remove_action('wp_head', 'wp_generator');
+        register_nav_menu( 'primary', 'Primary Menu' );
+        
+        if ( ! isset( $content_width ) )
+         $content_width = 500;
     }
-    add_action('init', 'removeHeadLinks');
-    
+    add_action('init', 'gray_init');
 
-	register_sidebar(array(
-		'name' => 'Sidebar Widgets',
-		'id'   => 'sidebar-widgets',
-		'description'   => 'These are widgets for the sidebar.',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</div>',
-		'before_title'  => '<h2>',
-		'after_title'   => '</h2>'
-	));
-    
+    function gray_header_style(){
+        ?>
+        <style type="text/css">
+            body{
+                <?php if(get_theme_mod("gray_cover_background_image")) : ?>
+                     background:url("<?php echo get_theme_mod('gray_cover_background_image'); ?>") center no-repeat fixed;
+                <?php else: ?>
+                    background: rgb(25,88,160); /* Old browsers */
+                    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMxOTU4YTAiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAxYTZiIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L3JhZGlhbEdyYWRpZW50PgogIDxyZWN0IHg9Ii01MCIgeT0iLTUwIiB3aWR0aD0iMTAxIiBoZWlnaHQ9IjEwMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+                    background: url("<?php echo get_theme_mod('gray_pattern_repeat'); ?>") repeat top left,-moz-radial-gradient(center, ellipse cover,  <?php echo get_theme_mod('gray_gradient_one'); ?> 0%, <?php echo get_theme_mod('gray_gradient_two'); ?> 100%); /* FF3.6+ */
+                    background: url("<?php echo get_theme_mod('gray_pattern_repeat'); ?>") repeat top left,-webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,<?php echo get_theme_mod('gray_gradient_one'); ?>), color-stop(100%,<?php echo get_theme_mod('gray_gradient_two'); ?>)); /* Chrome,Safari4+ */
+                    background: url("<?php echo get_theme_mod('gray_pattern_repeat'); ?>") repeat top left,-webkit-radial-gradient(center, ellipse cover,  <?php echo get_theme_mod('gray_gradient_one'); ?> 0%,<?php echo get_theme_mod('gray_gradient_two'); ?> 100%); /* Chrome10+,Safari5.1+ */
+                    background: url("<?php echo get_theme_mod('gray_pattern_repeat'); ?>") repeat top left,-o-radial-gradient(center, ellipse cover, <?php echo get_theme_mod('gray_gradient_one'); ?> 0%,<?php echo get_theme_mod('gray_gradient_two'); ?> 100%); /* Opera 12+ */
+                    background: url("<?php echo get_theme_mod('gray_pattern_repeat'); ?>") repeat top left,-ms-radial-gradient(center, ellipse cover,  <?php echo get_theme_mod('gray_gradient_one'); ?> 0%,<?php echo get_theme_mod('gray_gradient_two'); ?> 100%); /* IE10+ */
+                    background: url("<?php echo get_theme_mod('gray_pattern_repeat'); ?>") repeat top left,radial-gradient(ellipse at center, <?php echo get_theme_mod('gray_gradient_one'); ?> 0%,<?php echo get_theme_mod('gray_gradient_two'); ?> 100%); /* W3C */
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1958a0', endColorstr='#001a6b',GradientType=1 ); /* IE6-8 fallback on horizontal gradient */
+                <?php endif; ?>
+            }
+
+            #title a{
+                color : #<?php echo get_theme_mod("header_textcolor") ; ?>;
+                text-decoration: none;
+            }
+        </style>
+
+        <?php
+
+    }
+
+    add_theme_support( 'custom-header', array('wp-head-callback'  => 'gray_header_style'));
 
 
     function gray_menu_args( $args ) {
-     $args['show_home'] = true;
-     return $args;
+         $args['show_home'] = true;
+         return $args;
     }
     add_filter( 'wp_page_menu_args', 'gray_menu_args' );
+
+    //sets the title of the page
+    function gray_title($title, $sep){
+        global $paged, $page;
+
+        if ( is_feed() )
+            return $title;
+
+        $title .= bloginfo('name')  ;
+
+         $title  =  $title . " Page " . $paged;
+
+        return $title;
+    }
+    add_filter( 'wp_title', 'gray_title', 10, 2 );
 
     //setup the customizer
     function gray_customizer($wp_customizer)
@@ -215,6 +255,9 @@
         add_theme_page('gray home page', 'Theme Options', 'read', 'home', 'gray_home_options_page');
     }
     add_action('admin_menu','gray_admin_menu');
+
+
+  
 
 
 ?>
