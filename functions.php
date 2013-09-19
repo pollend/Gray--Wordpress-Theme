@@ -1,24 +1,6 @@
 <?php
 
-	function gray_init() {
-
-        register_sidebar(array(
-            'name' => 'Sidebar Widgets',
-            'id'   => 'sidebar-widgets',
-            'description'   => 'These are widgets for the sidebar.',
-            'before_widget' => '<div id="%1$s" class="widget %2$s">',
-            'after_widget'  => '</div>',
-            'before_title'  => '<h2>',
-            'after_title'   => '</h2>'
-        ));
-
-        register_nav_menu( 'primary', 'Primary Menu' );
-        
-        if ( ! isset( $content_width ) )
-         $content_width = 500;
-    }
-    add_action('init', 'gray_init');
-
+    //ouput header style and dump into page
     function gray_header_style(){
         ?>
         <style type="text/css">
@@ -48,9 +30,7 @@
 
     }
 
-    add_theme_support( 'custom-header', array('wp-head-callback'  => 'gray_header_style'));
-
-
+    //places a home link on the page
     function gray_menu_args( $args ) {
          $args['show_home'] = true;
          return $args;
@@ -174,7 +154,7 @@
     }
     add_action( 'customize_register', 'gray_customizer' );
 
-    //create the varibles for the custom preview
+    //create the varibles for the customizer preview
     function gray_customizer_preview(){
         ?>
         <script type="text/javascript">
@@ -186,6 +166,7 @@
         <?php
     }
 
+    //customizer preview script
     function gray_customizer_live_preview()
     {
         wp_enqueue_script( 
@@ -198,6 +179,7 @@
     }
     add_action( 'customize_preview_init', 'gray_customizer_live_preview' );
 
+    //enqueue scripts
     function gray_script_style()
     {
         //add javascript to pages with comment form
@@ -246,9 +228,26 @@
 
         ));
 
+        add_theme_support( 'custom-header', array('wp-head-callback'  => 'gray_header_style'));
+
+        register_sidebar(array(
+            'name' => 'Sidebar Widgets',
+            'id'   => 'sidebar-widgets',
+            'description'   => 'These are widgets for the sidebar.',
+            'before_widget' => '<div id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h2>',
+            'after_title'   => '</h2>'
+        ));
+
+        register_nav_menu( 'primary', 'Primary Menu' );
+        
+        if ( ! isset( $content_width ) )
+         $content_width = 500;
     }
     add_action( 'after_setup_theme', 'gray_setup' );
 
+    //add the admin options
     function gray_admin_menu()
     {
         include_once "admin/homeOptions.php";
