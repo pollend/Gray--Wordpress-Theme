@@ -32,8 +32,6 @@ function resizeMainArea(){
 
 function pageUpdate()
 {
-
-
 	contentAreaWidth = jQuery(".entry").width();
 
 	allVideos.each(function(){
@@ -49,6 +47,10 @@ jQuery(document).ready(function () {
 	if (!jQuery.support.transition)
   		jQuery.fn.transition = jQuery.fn.animate;
 
+  	jQuery(".sub-menu").each(function(){
+		jQuery(this).addClass("children");
+	});
+	
 	jQuery(".menu li").each(function(element){
 		if(jQuery(this).find(".children").length > 0)
 		{
