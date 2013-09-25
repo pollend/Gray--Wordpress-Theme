@@ -1,6 +1,6 @@
 <?php 
 /**
- * Template Name: Front Page Template
+ * Template Name: Front Page Template DED
  */
 
 update_option('current_page_template','front-page');

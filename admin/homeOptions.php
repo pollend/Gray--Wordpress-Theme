@@ -8,9 +8,6 @@
 		wp_enqueue_script('my-upload');
 		wp_enqueue_style('thickbox');
 
-        register_setting( 'gray_home_options', 'gray_home_options', 'gray_home_option_validate' );
-
-
         add_settings_section('gray_slides', 'Slides', 'gray_slide_section', 'gray_home_slide_settings');
         add_settings_field('Slides', 'Slides', 'gray_slide_field', 'gray_home_slide_settings', 'gray_slides');
 
@@ -34,6 +31,8 @@
         add_settings_field('right_header_info', 'info', 'gray_right_box_info_field', 'gray_home_slide_settings', 'gray_right_box');
 
     }
+
+
 
     function gray_blurb_title()
     {
