@@ -3,10 +3,9 @@
 
 
 if ( 'posts' == get_option( 'show_on_front' ) ): 
-	get_template_part( 'page', '' ); 
+	include( get_home_template());
 else:
 
-update_option('current_page_template','front-page');
 ?>
 
 <?php get_header(); ?>
