@@ -153,7 +153,6 @@
         $wp_customizer->get_setting( 'header_textcolor' )->transport = 'postMessage';
     }
     add_action( 'customize_register', 'gray_customizer' );
-
     //create the varibles for the customizer preview
     function gray_customizer_preview(){
         ?>

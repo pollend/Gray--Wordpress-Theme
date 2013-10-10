@@ -2,11 +2,15 @@
 
 	add_action('admin_init', 'gray_home_init');
     function gray_home_init(){
+	
+
     	wp_enqueue_script('media-upload');
 		wp_enqueue_script('thickbox');
 		wp_register_script('my-upload', get_template_directory_uri() .'/admin/HomeOptions.js', array('jquery','media-upload','thickbox'));
 		wp_enqueue_script('my-upload');
 		wp_enqueue_style('thickbox');
+
+		register_setting( 'gray_home_options', 'gray_home_options');
 
         add_settings_section('gray_slides', 'Slides', 'gray_slide_section', 'gray_home_slide_settings');
         add_settings_field('Slides', 'Slides', 'gray_slide_field', 'gray_home_slide_settings', 'gray_slides');
