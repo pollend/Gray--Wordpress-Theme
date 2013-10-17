@@ -52,6 +52,20 @@
     }
     add_filter( 'wp_title', 'gray_title', 10, 2 );
 
+    function gray_background_customizer()
+    {
+          /* Supply a list of built-in background that come with your theme */
+            $backgrounds = array(
+                'images/strip.png'
+            );
+
+            global  $wp_customize;
+            $control =  $wp_customize->get_control( 'gray_pattern_repeat' );
+
+            foreach ( (array) $backgrounds as $background )
+                $control->print_tab_image( esc_url_raw( get_stylesheet_directory_uri() . '/' . $background ) );
+    }
+
     //setup the customizer
     function gray_customizer($wp_customizer)
     {
@@ -103,18 +117,8 @@
         );
 
         $control = $wp_customizer->get_control( 'gray_pattern_repeat' );
-        $control->add_tab( 'builtins', 'Built-ins', function() {
-            /* Supply a list of built-in background that come with your theme */
-            $backgrounds = array(
-                'images/strip.png'
-            );
 
-            global  $wp_customize;
-            $control =  $wp_customize->get_control( 'gray_pattern_repeat' );
-
-            foreach ( (array) $backgrounds as $background )
-                $control->print_tab_image( esc_url_raw( get_stylesheet_directory_uri() . '/' . $background ) );
-         } );
+        $control->add_tab( 'builtins', 'Built-ins',gray_background_customizer );
 
 
         $wp_customizer->add_setting(
