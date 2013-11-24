@@ -18,24 +18,24 @@
 			<?php
 			}
 		}
-		else if($themeOptions["numslides"] > 1)
+		else if( count($themeOptions["Slide"]) > 1)
 		{
 			?>
 			<div id="slideContainer">
 				<ul id="slides">
 					<?php 
-					for($x = 0; $x < $themeOptions["numslides"]; $x++)
+					for($x = 0; $x < count($themeOptions["Slide"]); $x++)
 					{
-						if(!empty($themeOptions["isHTML".$x]))
+						if(!empty($themeOptions["isHTML"][$x]))
 						{
 							?>
-							<li id="slide<?php echo $x; ?>"> <?php echo  $themeOptions["Slide" .$x] ?> </li>
+							<li id="slide<?php echo $x; ?>"> <?php echo  $themeOptions["Slide"][$x] ?> </li>
 							<?php
 						}
 						else
 						{
 							?>
-								<li id="slide<?php echo $x; ?>" ><a><img class="fullSlideImage"src="<?php echo  $themeOptions["Slide" .$x] ?>"></img></a></li>
+								<li id="slide<?php echo $x; ?>" ><a><img class="fullSlideImage"src="<?php echo  $themeOptions["Slide"][$x] ?>"></img></a></li>
 							<?php
 						}
 					}

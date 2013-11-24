@@ -151,17 +151,16 @@
     function gray_slide_field() {
     	$options = get_option("gray_home_options");
         ?> 
-	        <input type="hidden" name="gray_home_options[numslides]" id="gray_options_number_slides" value="<?php echo $options["numslides"] ?>" />
 	        <div id="slide_options">
 		        <?php 
-		        for($x = 0; $x < $options["numslides"]; $x++)
+		        for($x = 0; $x < count($options["Slide"]); $x++)
 		        {
 		        	?>
 		        	<div id="slides_option_container<?php echo $x ?>">
-						<input id="upload_image<?php echo $x ?>" type="text" size="36" name='gray_home_options[Slide<?php echo $x; ?>]' value="<?php echo  htmlentities($options["Slide".$x]) ?>" />
+						<input id="upload_image<?php echo $x ?>" type="text" size="36" name='gray_home_options[Slide][<?php echo $x; ?>]' value="<?php echo  htmlentities($options["Slide"][$x]) ?>" />
 						<input id="upload_image_button<?php echo $x ?>" type="button" value="Upload Image" />
 						<input id="remove_slide<?php echo $x ?>" type="button" value="remove" /></br>Input raw HTML into slide: 
-						<input name='gray_home_options[isHTML<?php echo $x; ?>]' <?php echo empty($options["isHTML" . $x]) ? "" : "checked"; ?> value="1" type="checkbox"/>
+						<input name='gray_home_options[isHTML][<?php echo $x; ?>]' <?php echo empty($options["isHTML"][$x]) ? "" : "checked"; ?> value="1" type="checkbox"/>
 					</div>
 		        	<?php
 		        }

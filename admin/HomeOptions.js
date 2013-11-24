@@ -40,13 +40,15 @@ jQuery(document).ready(function() {
 	});
 
 	jQuery("#addSlide").on("click",function(){
+       
+
 		if(jQuery("#gray_options_number_slides").val() == "")
 		{
 			jQuery("#gray_options_number_slides").val(1);
 		}
 		jQuery("#gray_options_number_slides").val((parseInt(jQuery("#gray_options_number_slides").val()) + 1) + "");
-		var slideID = parseInt(jQuery("#gray_options_number_slides").val())-1;
-		jQuery("#slide_options").append("<div id=\"slides_option_container"+slideID+"\"><input id=\"upload_image"+slideID+"\" type=\"text\" size=\"36\" name=\"gray_home_options[Slide"+slideID+"]\" value=\"\" /><input id=\"upload_image_button"+slideID+"\" type=\"button\" value=\"Upload Image\" /><input id=\"remove_slide"+slideID+"\" type=\"button\" value=\"remove\" /></br>Input raw HTML into slide: <input name=\"gray_home_options[isHTML"+slideID+"]\"value=\"1\" type=\"checkbox\"/></div>");
+		var slideID =jQuery("#slide_options div").length;
+		jQuery("#slide_options").append("<div id=\"slides_option_container"+slideID+"\"><input id=\"upload_image"+slideID+"\" type=\"text\" size=\"36\" name=\"gray_home_options[Slide]["+slideID+"]\" value=\"\" /><input id=\"upload_image_button"+slideID+"\" type=\"button\" value=\"Upload Image\" /><input id=\"remove_slide"+slideID+"\" type=\"button\" value=\"remove\" /></br>Input raw HTML into slide: <input name=\"gray_home_options[isHTML]["+slideID+"]\"value=\"1\" type=\"checkbox\"/></div>");
 
 
 		jQuery("#upload_image_button" + slideID).on("click",{field : ("#upload_image"+slideID)},function(event) {
